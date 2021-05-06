@@ -1,7 +1,6 @@
-# Installing the Spacy Fun app
+# Running the Spacy Fun app
 
-Install the requirements from requirements.txt using pip.
-
+Install the requirements from requirements.txt using pip, and ensure that the spacy model "en_core_web_sm" has been downloaded (you can run ```python -m spacy download en_core_web_sm```
 # Run the app
 
 Open the terminal and run the spacy_fun_app.py file.
@@ -20,19 +19,25 @@ Interface to the spaCy entity extractor
 }
 
 % curl http://127.0.0.1:5000/api/entities 
-{
-  "Japanese": 1
-}
+[
+  ("Japanese", "NORP")
+]
 
 ```
 
 
 ## In a web browser
 
-Go to [the site's address](http://127.0.0.1:5000/) and enter the text you are interested in running spaCy's NER model on, and submit the text. Then you should see the results on the page you are redirected to. On both pages there is a link to the entities page, which shows a table of all the entities the app has seen while this instance has been running.
+Go to [the site's address](http://0.0.0.1:5000/) and enter the text you are interested in running spaCy's NER model on, and submit the text. Then you should see the results on the page you are redirected to. On both pages there is a link to the entities page, which shows a table of all the entities the app has seen while this instance has been running.
 
-# Future development
+## Building a docker image
 
-It might be wise to jsonify the 'database' of entities that app has seen and save them to produce continuity between instances of the app. For now, that is not needed.
-
-
+Use Docker to build from the provided Dockerfile and then run the container image. For example:
+```
+% docker build -t spacy_fun:latest .
+```
+and then
+```
+docker run -d -p 80:80 spacy_fun:latest
+```
+then you can proceed as if it is running normally!
