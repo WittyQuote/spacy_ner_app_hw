@@ -11,7 +11,7 @@ from jinja2 import Template
 
 app = Flask(__name__)
 
-entity_db = db.DatabaseConnection('entites.sqlite')
+entity_db = db.DatabaseConnection('entities.sqlite')
 entity_db.create_schema()
 
 nlp = spacy.load("en_core_web_sm")
